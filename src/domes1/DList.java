@@ -2,6 +2,7 @@ package domes1;
 
 public class DList implements List {
 	
+	//geia
 	Node head;
 	Node tail;
 	
