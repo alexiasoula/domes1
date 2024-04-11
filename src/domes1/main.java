@@ -54,11 +54,19 @@ public class main {
         // Εδώ μπορείτε να εμφανίσετε τα αποτελέσματα στον τρόπο που ταιριάζει στην προγραμματική σας αρχιτεκτονική
     }
 
-    private static void runMeasurements(DList dList, MyElement[] elements, int size, double[] times, int[] operations, int cs) {
+    private static void runMeasurements(DList dlist, MyElement[] elements, int size, double[] times, int[] operations, int cs) {
         // Παράγετε τους τυχαίους αριθμούς
         Random random = new Random();
-        int[] randomKeys = new int[1000];
-        for (int i = 0; i < 1000; i++) {
+        int K = 0;
+        if(size < 201) {
+        	K = 10;
+        } else if(size > 20 && size < 1001) {
+        	K = 50;
+        } else if(size > 1000) {
+        	K = 100;
+        }
+        int[] randomKeys = new int[K];
+        for (int i = 0; i < K; i++) {
             randomKeys[i] = random.nextInt(2 * size) + 1;
         }
 
@@ -70,19 +78,19 @@ public class main {
                 case 0:
                     for (int key : randomKeys) {
                         MyElement element = new MyElement(key);
-                        dList.insert(element);
+                        dlist.insert(element);
                         operationCount++;
                     }
                     break;
                 case 1:
                     for (MyElement element : elements) {
-                        dList.delete(element.getKey());
+                    	dlist.delete(element.getKey());
                         operationCount++;
                     }
                     break;
                 case 2:
                     for (int key : randomKeys) {
-                        dList.search(key);
+                    	dlist.search(key);
                         operationCount++;
                     }
                     break;

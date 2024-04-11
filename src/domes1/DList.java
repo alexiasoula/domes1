@@ -24,7 +24,8 @@ public class DList implements List {
 			tail.next = newNode;
 			tail = newNode;
 		}
-		
+		MultiCounter.increaseCounter(1, 4);
+		System.out.println(MultiCounter.getCount(1));
 		return true;
 	}
 	
@@ -37,10 +38,11 @@ public class DList implements List {
 		
 		Node current = head;
 		Node prev = null;
-		
+		MultiCounter.increaseCounter(2, 2);
 		while(current != null && current.data.getKey() != key) {
 			prev = current ;
 			current = current.next;
+			MultiCounter.increaseCounter(2, 4);
 		}
 		if(current == null) {
 			return false;
@@ -53,8 +55,9 @@ public class DList implements List {
 		}
 		if (current == tail) {
 			tail = prev;
+			MultiCounter.increaseCounter(2);
 		}
-		
+		MultiCounter.increaseCounter(2, 3);
 		return false;
 	}
 	
@@ -65,11 +68,13 @@ public class DList implements List {
 	 */
 	public Element search(int key) {
 		Node current = head;
+		MultiCounter.increaseCounter(3);
 		while(current != null) {
 			if(current.data.getKey() == key) {
 				return current.data;
 			}
 			current = current.next;
+			MultiCounter.increaseCounter(3, 3);
 		}
 		return null;
 	}
