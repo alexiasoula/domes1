@@ -23,14 +23,13 @@ public class PerformanceExperiment {
 
         // Initialize each implementation
         List[] implementations = {
-                new DList()/*, new SDList()*/};
+                new DList(), new SDList()/*, new AAList(n), new SAAList(n)*/};
 
         // Run each operation for each implementation
         for (List implementation : implementations) {
             long totalTimeInsert = 0;
             long totalTimeDelete = 0;
             long totalTimeSearch = 0;
-            long totalOperations = 0;
             MultiCounter.resetCounter(1);
             MultiCounter.resetCounter(2);
             MultiCounter.resetCounter(3);
@@ -44,36 +43,52 @@ public class PerformanceExperiment {
                     implementation.insert(element);
                     long endTime = System.nanoTime();
                     totalTimeInsert += (endTime - startTime);
-
-                    // Measure delete operation
-                    startTime = System.nanoTime();
-                    implementation.delete(keys[randomIndex]);
-                    endTime = System.nanoTime();
-                    totalTimeDelete += (endTime - startTime);
-
-                    // Measure search operation
-                    startTime = System.nanoTime();
-                    implementation.search(keys[randomIndex]);
-                    endTime = System.nanoTime();
-                    totalTimeSearch += (endTime - startTime);
-
-                    totalOperations += 3; // Each loop iteration performs 3 operations
                 }
             }
+            for (int k : K_VALUES) {
+                for (int i = 0; i < k; i++) {
+                    int randomIndex = random.nextInt(n);
 
+                    // Measure delete operation
+                    long startTime = System.nanoTime();
+                    implementation.delete(keys[randomIndex]);
+                    long endTime = System.nanoTime();
+                    totalTimeDelete += (endTime - startTime);
+
+                }
+            }
+            for (int k : K_VALUES) {
+                for (int i = 0; i < k; i++) {
+                    int randomIndex = random.nextInt(n);
+
+                    // Measure search operation
+                    long startTime = System.nanoTime();
+                    implementation.search(keys[randomIndex]);
+                    long endTime = System.nanoTime();
+                    totalTimeSearch += (endTime - startTime);
+
+                }
+            }     
+          
             // Calculate averages
             double averageTimeInsert = (double) totalTimeInsert / (double) MultiCounter.getCount(1);
             double averageTimeDelete = (double) totalTimeDelete / (double) MultiCounter.getCount(2);
             double averageTimeSearch = (double) totalTimeSearch / (double) MultiCounter.getCount(3);
 
+//            double averageOperationsInsert = MultiCounter.getCount(1)/(MultiCounter.getCount(1) + MultiCounter.getCount(2) + MultiCounter.getCount(3));
+//            double averageOperationsDelete = MultiCounter.getCount(2)/(MultiCounter.getCount(1) + MultiCounter.getCount(2) + MultiCounter.getCount(3));
+//            double averageOperationsSearch = MultiCounter.getCount(3)/(MultiCounter.getCount(1) + MultiCounter.getCount(2) + MultiCounter.getCount(3));
+            
             System.out.println("Implementation: " + implementation.getClass().getSimpleName());
             System.out.println("Average Insert Time: " + averageTimeInsert + " nanoseconds");
-            //System.out.println(MultiCounter.getCount(1));
+//            System.out.println("Average Insert Operations: " + averageOperationsInsert);
             System.out.println("Average Delete Time: " + averageTimeDelete + " nanoseconds");
-            //System.out.println(MultiCounter.getCount(2));
+//            System.out.println("Average Delete Operations: " + averageOperationsDelete);
             System.out.println("Average Search Time: " + averageTimeSearch + " nanoseconds");
-            //System.out.println(MultiCounter.getCount(3));
-            System.out.println();
+//            System.out.println("Average Search Operations: " + averageOperationsSearch);
+            System.out.println(totalTimeInsert);
+            System.out.println(totalTimeDelete);
+            
         }
     }
 

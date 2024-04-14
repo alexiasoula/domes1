@@ -18,10 +18,11 @@ public class SDList extends DList{
 		Node newNode = new Node(element);
 		Node current = head;
 		Node prev = null;
-		
+		MultiCounter.increaseCounter(1, 2);
 		while (current != null && current.data.getKey() < element.getKey()) {
 			prev = current;
 			current = current.next;
+			MultiCounter.increaseCounter(1, 4);
 		}
 		
 		if (prev == null) {
@@ -31,7 +32,7 @@ public class SDList extends DList{
 			newNode.next = current;
 			prev.next = newNode;
 		}
-		
+		MultiCounter.increaseCounter(1, 4);
 		return true;
 	}
 	
@@ -44,28 +45,31 @@ public class SDList extends DList{
 		
 		Node current = head;
 		Node prev = null;
+		MultiCounter.increaseCounter(2);
 		
 		while(current != null && current.data.getKey() != key) {
 			prev = current ;
 			current = current.next;
+			MultiCounter.increaseCounter(2, 4);
 		}
 		if(current == null) {
 			return false;
 		}
-		
+		MultiCounter.increaseCounter(2);
 		if(current == head) {
 			head = head.next;
 			current = null;
+			MultiCounter.increaseCounter(2, 3);
 		} else if(current == tail) {
 			tail = prev;
 			current = null;
+			MultiCounter.increaseCounter(2, 3);
 		} else {
 			while(current != null) {
 				current = current.next;
+				MultiCounter.increaseCounter(2, 2);
 			}
 		}
-		
-		
 		return false;
 	}
 	
@@ -76,11 +80,13 @@ public class SDList extends DList{
 	 */
 	public Element search(int key) {
 		Node current = head;
+		MultiCounter.increaseCounter(3);
 		while(current != null) {
 			if(current.data.getKey() == key) {
 				return current.data;
 			}
 			current = current.next;
+			MultiCounter.increaseCounter(3, 3);
 		}
 		return null;
 	}
