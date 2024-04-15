@@ -4,10 +4,23 @@ public class DList implements List {
 	
 	Node head;
 	Node tail;
+	long totalTimeInsert;
+	long totalTimeDelete;
+	long totalTimeSearch;
+	int insertCount;
+	int deleteCount;
+	int searchCount;
 	
 	public DList() {
+		
 		this.head = null;
 		this.tail = null;
+		this.totalTimeInsert = 0;
+		this.totalTimeDelete = 0;
+		this.totalTimeSearch = 0;
+		this.insertCount = 0;
+		this.deleteCount = 0;
+		this.searchCount = 0;
 	}
 	
 	/**
@@ -58,7 +71,7 @@ public class DList implements List {
 			MultiCounter.increaseCounter(2);
 		}
 		MultiCounter.increaseCounter(2, 3);
-		return false;
+		return true;
 	}
 	
 	/**
@@ -79,5 +92,55 @@ public class DList implements List {
 		MultiCounter.increaseCounter(3);
 		return null;
 	}
+
+	public long getTotalTimeInsert() {
+		return totalTimeInsert;
+	}
+
+	public void setTotalTimeInsert(long totalTimeInsert) {
+		this.totalTimeInsert = totalTimeInsert;
+	}
+
+	public long getTotalTimeDelete() {
+		return totalTimeDelete;
+	}
+
+	public void setTotalTimeDelete(long totalTimeDelete) {
+		this.totalTimeDelete = totalTimeDelete;
+	}
+
+	public long getTotalTimeSearch() {
+		return totalTimeSearch;
+	}
+
+	public void setTotalTimeSearch(long totalTimeSearch) {
+		this.totalTimeSearch = totalTimeSearch;
+	}
+
+	public int getInsertCount() {
+		return insertCount;
+	}
+
+	public void setInsertCount(int insertCount) {
+		this.insertCount = insertCount;
+	}
+
+	public int getDeleteCount() {
+		return deleteCount;
+	}
+
+	public void setDeleteCount(int deleteCount) {
+		this.deleteCount = deleteCount;
+	}
+
+	public int getSearchCount() {
+		return searchCount;
+	}
+
+	public void setSearchCount(int searchCount) {
+		this.searchCount = searchCount;
+	}
+	
+	
 }
 

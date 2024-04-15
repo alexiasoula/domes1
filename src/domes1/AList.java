@@ -4,11 +4,23 @@ public class AList implements List {
 
     private Element[] elements;
     private int tail; // Points to the last element of the list
+    long totalTimeInsert;
+	long totalTimeDelete;
+	long totalTimeSearch;
+	int insertCount;
+	int deleteCount;
+	int searchCount;
 
     // Constructor
     public AList(int maxSize) {
         elements = new Element[maxSize];
         tail = -1; // Initially the list is empty
+        this.totalTimeInsert = 0;
+		this.totalTimeDelete = 0;
+		this.totalTimeSearch = 0;
+		this.insertCount = 0;
+		this.deleteCount = 0;
+		this.searchCount = 0;
     }
 
     // Insert an element into the list
@@ -61,4 +73,52 @@ public class AList implements List {
         }
         return -1; // Element not found
     }
+    
+    public long getTotalTimeInsert() {
+		return totalTimeInsert;
+	}
+
+	public void setTotalTimeInsert(long totalTimeInsert) {
+		this.totalTimeInsert = totalTimeInsert;
+	}
+
+	public long getTotalTimeDelete() {
+		return totalTimeDelete;
+	}
+
+	public void setTotalTimeDelete(long totalTimeDelete) {
+		this.totalTimeDelete = totalTimeDelete;
+	}
+
+	public long getTotalTimeSearch() {
+		return totalTimeSearch;
+	}
+
+	public void setTotalTimeSearch(long totalTimeSearch) {
+		this.totalTimeSearch = totalTimeSearch;
+	}
+
+	public int getInsertCount() {
+		return insertCount;
+	}
+
+	public void setInsertCount(int insertCount) {
+		this.insertCount = insertCount;
+	}
+
+	public int getDeleteCount() {
+		return deleteCount;
+	}
+
+	public void setDeleteCount(int deleteCount) {
+		this.deleteCount = deleteCount;
+	}
+
+	public int getSearchCount() {
+		return searchCount;
+	}
+
+	public void setSearchCount(int searchCount) {
+		this.searchCount = searchCount;
+	}
 }

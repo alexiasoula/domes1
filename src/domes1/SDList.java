@@ -3,10 +3,16 @@ package domes1;
 public class SDList extends DList{
 	Node head;
 	Node tail;
+	long totalTimeInsert;
+	long totalTimeDelete;
+	long totalTimeSearch;
 	
 	public SDList() {
 		this.head = null;
 		this.tail = null;
+		this.totalTimeInsert = 0;
+		this.totalTimeDelete = 0;
+		this.totalTimeSearch = 0;
 	}
 	
 	/**
@@ -18,11 +24,11 @@ public class SDList extends DList{
 		Node newNode = new Node(element);
 		Node current = head;
 		Node prev = null;
-		MultiCounter.increaseCounter(1, 2);
+		MultiCounter.increaseCounter(4, 2);
 		while (current != null && current.data.getKey() < element.getKey()) {
 			prev = current;
 			current = current.next;
-			MultiCounter.increaseCounter(1, 4);
+			MultiCounter.increaseCounter(4, 4);
 		}
 		
 		if (prev == null) {
@@ -32,7 +38,7 @@ public class SDList extends DList{
 			newNode.next = current;
 			prev.next = newNode;
 		}
-		MultiCounter.increaseCounter(1, 4);
+		MultiCounter.increaseCounter(4, 4);
 		return true;
 	}
 	
@@ -45,32 +51,32 @@ public class SDList extends DList{
 		
 		Node current = head;
 		Node prev = null;
-		MultiCounter.increaseCounter(2);
+		MultiCounter.increaseCounter(5);
 		
 		while(current != null && current.data.getKey() != key) {
 			prev = current ;
 			current = current.next;
-			MultiCounter.increaseCounter(2, 4);
+			MultiCounter.increaseCounter(5, 4);
 		}
 		if(current == null) {
 			return false;
 		}
-		MultiCounter.increaseCounter(2);
+		MultiCounter.increaseCounter(5);
 		if(current == head) {
 			head = head.next;
 			current = null;
-			MultiCounter.increaseCounter(2, 3);
+			MultiCounter.increaseCounter(5, 3);
 		} else if(current == tail) {
 			tail = prev;
 			current = null;
-			MultiCounter.increaseCounter(2, 3);
+			MultiCounter.increaseCounter(5, 3);
 		} else {
 			while(current != null) {
 				current = current.next;
-				MultiCounter.increaseCounter(2, 2);
+				MultiCounter.increaseCounter(5, 2);
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	/**
@@ -80,14 +86,38 @@ public class SDList extends DList{
 	 */
 	public Element search(int key) {
 		Node current = head;
-		MultiCounter.increaseCounter(3);
+		MultiCounter.increaseCounter(6);
 		while(current != null) {
 			if(current.data.getKey() == key) {
 				return current.data;
 			}
 			current = current.next;
-			MultiCounter.increaseCounter(3, 3);
+			MultiCounter.increaseCounter(6, 3);
 		}
 		return null;
+	}
+	
+	public long getTotalTimeInsert() {
+		return totalTimeInsert;
+	}
+
+	public void setTotalTimeInsert(long totalTimeInsert) {
+		this.totalTimeInsert = totalTimeInsert;
+	}
+
+	public long getTotalTimeDelete() {
+		return totalTimeDelete;
+	}
+
+	public void setTotalTimeDelete(long totalTimeDelete) {
+		this.totalTimeDelete = totalTimeDelete;
+	}
+
+	public long getTotalTimeSearch() {
+		return totalTimeSearch;
+	}
+
+	public void setTotalTimeSearch(long totalTimeSearch) {
+		this.totalTimeSearch = totalTimeSearch;
 	}
 }

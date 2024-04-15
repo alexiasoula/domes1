@@ -10,9 +10,9 @@ package domes1;
 public class MultiCounter {
 
 	/**
-	 * variable holding our counters. We support up to 10 counters
+	 * variable holding our counters. We support up to 18 counters
 	 */
-	private static long[] counters = new long[10];
+	private static long[] counters = new long[18];
 
 
 	/**
