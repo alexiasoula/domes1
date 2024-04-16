@@ -8,7 +8,6 @@ public class SAList extends AList {
     }
 
     // Override the insert method to maintain sorting
-    @Override
     public boolean insert(Element element) {
         if (tail < elements.length - 1) {
             int index = binarySearch(element.getKey()); // Find the index for insertion
@@ -25,7 +24,6 @@ public class SAList extends AList {
     }
 
     // Override the delete method
-    @Override
     public boolean delete(int key) {
         int index = binarySearch(key); // Find the index of the element to delete
         if (index != -1) {
@@ -42,7 +40,6 @@ public class SAList extends AList {
     }
 
     // Override the search method
-    @Override
     public Element search(int key) {
         int index = binarySearch(key); // Find the index of the element
         if (index != -1) {

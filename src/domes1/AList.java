@@ -28,10 +28,10 @@ public class AList implements List {
         if (tail < elements.length - 1) {
             tail++; // Move the tail pointer to the next available position
             elements[tail] = element; // Insert the element at the tail position
-            MultiCounter.increaseCounter(1, 3);
+            MultiCounter.increaseCounter(13, 3);
             return true;
         } else {
-    		MultiCounter.increaseCounter(1);
+    		MultiCounter.increaseCounter(13);
             System.out.println("List is full");
             return false;
         }
@@ -39,8 +39,9 @@ public class AList implements List {
 
     // Delete an element from the list
     public boolean delete(int key) {
-        int index = searchIndex(key);
+        int index = searchIndex(key, 14);
         if (index != -1) {
+        	MultiCounter.increaseCounter(14, 2);
             for (int i = index; i < tail; i++) {
                 elements[i] = elements[i + 1]; // Move elements to the left to fill the gap
             }
@@ -55,7 +56,7 @@ public class AList implements List {
 
     // Search for an element in the list
     public Element search(int key) {
-        int index = searchIndex(key);
+        int index = searchIndex(key, 15);
         if (index != -1) {
             return elements[index];
         } else {
@@ -65,8 +66,10 @@ public class AList implements List {
     }
 
     // Helper method to find the index of an element with a given key
-    private int searchIndex(int key) {
+    private int searchIndex(int key, int cntr) {
+    	MultiCounter.increaseCounter(cntr);
         for (int i = 0; i <= tail; i++) {
+        	MultiCounter.increaseCounter(cntr, 3);
             if (elements[i].getKey() == key) {
                 return i;
             }

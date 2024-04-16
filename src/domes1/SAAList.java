@@ -18,11 +18,11 @@ public class SAAList extends AAList{
             // Find the correct position to insert the element
             int prev = -1;
             int current = head;
-    		MultiCounter.increaseCounter(1, 6);
+    		MultiCounter.increaseCounter(10, 6);
             while (current != -1 && elements[current].getKey() < element.getKey()) {
                 prev = current;
                 current = next[current];
-        		MultiCounter.increaseCounter(1, 2);
+        		MultiCounter.increaseCounter(10, 2);
             }
             if (prev == -1) {
                 // Insert at the beginning
@@ -33,18 +33,18 @@ public class SAAList extends AAList{
                 next[index] = next[prev];
                 next[prev] = index;
             }
-    		MultiCounter.increaseCounter(1, 5);
+    		MultiCounter.increaseCounter(10, 5);
             // Update tail if necessary
             if (current == -1) {
                 tail = index;
-        		MultiCounter.increaseCounter(1);
+        		MultiCounter.increaseCounter(10);
             }
             
         } else {
             System.out.println("List is full");
             return false;
         }
-		MultiCounter.increaseCounter(1);
+		MultiCounter.increaseCounter(10);
         return true;
     }
 
@@ -53,7 +53,7 @@ public class SAAList extends AAList{
     public boolean delete(int key) {
         int prev = -1;
         int current = head;
-		MultiCounter.increaseCounter(2, 2);
+		MultiCounter.increaseCounter(11, 2);
         while (current != -1) {
             if (elements[current].getKey() == key) {
                 if (prev != -1) {
@@ -63,33 +63,33 @@ public class SAAList extends AAList{
                 }
                 if (current == tail) {
                     tail = prev;
-            		MultiCounter.increaseCounter(2);
+            		MultiCounter.increaseCounter(11);
                 }
                 next[current] = nextFree;
                 nextFree = current;
-        		MultiCounter.increaseCounter(2, 5);
+        		MultiCounter.increaseCounter(11, 5);
                 return true;
             }
             prev = current;
             current = next[current];
-    		MultiCounter.increaseCounter(2, 4);
+    		MultiCounter.increaseCounter(11, 4);
         }
-		MultiCounter.increaseCounter(2);
+		MultiCounter.increaseCounter(11);
         //System.out.println("Element not found");
         return false;
     }
 
     public Element search(int key) {
     	int current = head;
-		MultiCounter.increaseCounter(3);
+		MultiCounter.increaseCounter(12);
     	while(current != -1) {
     		if(elements[current].getKey() == key) {
     			return elements[current];
     		}
     		current = next[current];
-    		MultiCounter.increaseCounter(3, 3);
+    		MultiCounter.increaseCounter(12, 3);
     	}
-		MultiCounter.increaseCounter(3);
+		MultiCounter.increaseCounter(12);
     	//System.out.println("Element not found");
         return null;
     }

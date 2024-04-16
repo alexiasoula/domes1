@@ -41,23 +41,23 @@ public class AAList implements List {
 			nextFree = next[index]; // update free to next free row
 			elements[index] = element;
 			next[index] = -1; // no next element initially
-			MultiCounter.increaseCounter(1, 4);
+			MultiCounter.increaseCounter(7, 4);
 			if (tail != -1) {
 				next[tail] = index; // update next of previous tail to new index
-				MultiCounter.increaseCounter(1);
+				MultiCounter.increaseCounter(7);
 			}
 			tail = index;
-			MultiCounter.increaseCounter(1, 2);
+			MultiCounter.increaseCounter(7, 2);
 			if (head == -1) {
 				head = index;
-				MultiCounter.increaseCounter(1);
+				MultiCounter.increaseCounter(7);
 			}
-			MultiCounter.increaseCounter(1);
+			MultiCounter.increaseCounter(7);
 		} else {
 			System.out.println("List is full");
 			return false;
 		}
-		MultiCounter.increaseCounter(1);
+		MultiCounter.increaseCounter(7);
 		return true;
 	}
 
@@ -65,7 +65,7 @@ public class AAList implements List {
 	public boolean delete(int key) {
 		int prev = -1;
 		int current = head;
-		MultiCounter.increaseCounter(2,2);
+		MultiCounter.increaseCounter(8,2);
 		while (current != -1) {
 			if (elements[current].getKey() == key) {
 				if (prev != -1) {
@@ -75,20 +75,20 @@ public class AAList implements List {
 				}
 				if (current == tail) {
 					tail = prev;
-					MultiCounter.increaseCounter(2);
+					MultiCounter.increaseCounter(8);
 				}
 				next[current] = nextFree;
 				nextFree = current;
-				MultiCounter.increaseCounter(2, 5);
+				MultiCounter.increaseCounter(8, 5);
 
 				return true;
 			}
 			prev = current;
 			current = next[current];
-			MultiCounter.increaseCounter(2, 4);
+			MultiCounter.increaseCounter(8, 4);
 
 		}
-		MultiCounter.increaseCounter(2);
+		MultiCounter.increaseCounter(8);
 		//System.out.println("Element not found to delete");
 		return false;
 	}
@@ -100,9 +100,9 @@ public class AAList implements List {
 				return elements[current];
 			}
 			current = next[current];
-			MultiCounter.increaseCounter(3, 3);
+			MultiCounter.increaseCounter(9, 3);
 		}
-		MultiCounter.increaseCounter(3,2);
+		MultiCounter.increaseCounter(9,2);
 		//System.out.println("Element not found for search");
 		return null;
 	}
