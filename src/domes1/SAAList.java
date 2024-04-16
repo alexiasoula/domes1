@@ -75,7 +75,7 @@ public class SAAList extends AAList{
     		MultiCounter.increaseCounter(2, 4);
         }
 		MultiCounter.increaseCounter(2);
-        System.out.println("Element not found");
+        //System.out.println("Element not found");
         return false;
     }
 
@@ -90,7 +90,7 @@ public class SAAList extends AAList{
     		MultiCounter.increaseCounter(3, 3);
     	}
 		MultiCounter.increaseCounter(3);
-    	System.out.println("Element not found");
+    	//System.out.println("Element not found");
         return null;
     }
     

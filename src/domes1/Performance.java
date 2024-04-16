@@ -17,7 +17,7 @@ public class Performance {
 
     private static List[] runExperiment(int n) {
         // Preparation
-        List[] implementations = {new DList(), new SDList(), new AAList(n), new SAAList(n)/*, new AList(n), new SAList(n)*/};
+        List[] implementations = {new DList(), new SDList(), new AAList(n + 10000), new SAAList(n + 10000), new AList(n + 10000)/*, new SAList(n + 10000)*/};
 
         int[] keys = generateRandomKeys(n, n);
 
@@ -91,8 +91,8 @@ public class Performance {
         for (List implementation : implementations) {
             System.out.println("Data Structure: " + implementation.getClass().getSimpleName());
             System.out.println("Average Insertion Time (ns): " + (float) implementation.getTotalTimeInsert() / (float) implementation.getInsertCount());
-            System.out.println("Average Deletion Time (ns): " + (long) implementation.getTotalTimeDelete() /  (implementation.getDeleteCount()));
-            System.out.println("Average Search Time (ns): " + (long) implementation.getTotalTimeSearch() / (implementation.getSearchCount()));
+            System.out.println("Average Deletion Time (ns): " + (float) implementation.getTotalTimeDelete() /  (float) implementation.getDeleteCount());
+            System.out.println("Average Search Time (ns): " + (float) implementation.getTotalTimeSearch() / (float) implementation.getSearchCount());
             System.out.println();
         }
     }

@@ -2,14 +2,14 @@ package domes1;
 
 public class AList implements List {
 
-    private Element[] elements;
-    private int tail; // Points to the last element of the list
-    long totalTimeInsert;
-	long totalTimeDelete;
-	long totalTimeSearch;
-	int insertCount;
-	int deleteCount;
-	int searchCount;
+    protected Element[] elements;
+    protected int tail; // Points to the last element of the list
+    protected long totalTimeInsert;
+    protected long totalTimeDelete;
+    protected long totalTimeSearch;
+    protected int insertCount;
+    protected int deleteCount;
+    protected int searchCount;
 
     // Constructor
     public AList(int maxSize) {
@@ -48,7 +48,7 @@ public class AList implements List {
             tail--; // Update the tail pointer
             return true;
         } else {
-            System.out.println("Element not found");
+            //System.out.println("Element not found");
             return false;
         }
     }
@@ -59,7 +59,7 @@ public class AList implements List {
         if (index != -1) {
             return elements[index];
         } else {
-            System.out.println("Element not found");
+            //System.out.println("Element not found");
             return null;
         }
     }

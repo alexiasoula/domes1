@@ -2,24 +2,9 @@ package domes1;
 
 public class SAList extends AList {
 	
-	private Element[] elements;
-    private int tail; // Points to the last element of the list
-    long totalTimeInsert;
-	long totalTimeDelete;
-	long totalTimeSearch;
-	int insertCount;
-	int deleteCount;
-	int searchCount;
-
     // Constructor
     public SAList(int maxSize) {
         super(maxSize); // Call the constructor of the parent class
-        this.totalTimeInsert = 0;
-		this.totalTimeDelete = 0;
-		this.totalTimeSearch = 0;
-		this.insertCount = 0;
-		this.deleteCount = 0;
-		this.searchCount = 0;
     }
 
     // Override the insert method to maintain sorting
@@ -51,7 +36,7 @@ public class SAList extends AList {
             tail--; // Update the tail pointer
             return true;
         } else {
-            System.out.println("Element not found");
+            //System.out.println("Element not found");
             return false;
         }
     }
@@ -63,7 +48,7 @@ public class SAList extends AList {
         if (index != -1) {
             return elements[index];
         } else {
-            System.out.println("Element not found");
+            //System.out.println("Element not found");
             return null;
         }
     }
