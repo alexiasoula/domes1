@@ -2,28 +2,10 @@ package domes1;
 
 public class SAAList extends AAList{
 
-	private Element[] elements;
-    private int[] next;
-    private int head;
-    private int tail;
-    private int nextFree; //points to the first free position to elements
-    long totalTimeInsert;
-	long totalTimeDelete;
-	long totalTimeSearch;
-	int insertCount;
-	int deleteCount;
-	int searchCount;
-
     //Constructor
     public SAAList(int maxSize) {
     	super(maxSize);
-    	this.totalTimeInsert = 0;
-		this.totalTimeDelete = 0;
-		this.totalTimeSearch = 0;
-		this.insertCount = 0;
-		this.deleteCount = 0;
-		this.searchCount = 0;
-
+		
     }
  // Insert an element to the list in sorted order
     public boolean insert(Element element) {

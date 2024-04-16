@@ -17,8 +17,7 @@ public class Performance {
 
     private static List[] runExperiment(int n) {
         // Preparation
-        List[] implementations = {
-                new DList(), new SDList(), new AAList(n), new SAAList(n)};
+        List[] implementations = {new DList(), new SDList(), new AAList(n), new SAAList(n)/*, new AList(n), new SAList(n)*/};
 
         int[] keys = generateRandomKeys(n, n);
 
@@ -58,12 +57,10 @@ public class Performance {
             for (List implementation : implementations) {
                 // Measure delete operation
                 long startTime = System.nanoTime();
-                boolean successful = implementation.delete(num);
+                implementation.delete(num);
                 long endTime = System.nanoTime();
-                if (successful) {
-                	implementation.setTotalTimeDelete(implementation.getTotalTimeDelete() + (endTime - startTime));
-                	implementation.setDeleteCount(implementation.getDeleteCount() + 1);
-                }
+                implementation.setTotalTimeDelete(implementation.getTotalTimeDelete() + (endTime - startTime));
+            	implementation.setDeleteCount(implementation.getDeleteCount() + 1);
             }
         }
 
@@ -72,12 +69,10 @@ public class Performance {
             for (List implementation : implementations) {
                 // Measure search operation
                 long startTime = System.nanoTime();
-                Element successful = implementation.search(num);
+                implementation.search(num);
                 long endTime = System.nanoTime();
-                if(successful != null) {
-                	implementation.setTotalTimeSearch(implementation.getTotalTimeSearch() + (endTime - startTime));
-                	implementation.setSearchCount(implementation.getSearchCount() + 1);
-                }
+                implementation.setTotalTimeSearch(implementation.getTotalTimeSearch() + (endTime - startTime));
+            	implementation.setSearchCount(implementation.getSearchCount() + 1);
             }
         }
         return implementations;
@@ -95,9 +90,9 @@ public class Performance {
         System.out.println("Results for N = " + n + " elements:");
         for (List implementation : implementations) {
             System.out.println("Data Structure: " + implementation.getClass().getSimpleName());
-            System.out.println("Average Insertion Time (ns): " + (long) implementation.getTotalTimeInsert() / (long) implementation.getInsertCount());
-            System.out.println("Average Deletion Time (ns): " + (long) implementation.getTotalTimeDelete() / (long) implementation.getDeleteCount());
-            System.out.println("Average Search Time (ns): " + (long) implementation.getTotalTimeSearch() / (long) implementation.getSearchCount());
+            System.out.println("Average Insertion Time (ns): " + (float) implementation.getTotalTimeInsert() / (float) implementation.getInsertCount());
+            System.out.println("Average Deletion Time (ns): " + (long) implementation.getTotalTimeDelete() /  (implementation.getDeleteCount()));
+            System.out.println("Average Search Time (ns): " + (long) implementation.getTotalTimeSearch() / (implementation.getSearchCount()));
             System.out.println();
         }
     }

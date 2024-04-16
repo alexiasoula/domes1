@@ -2,17 +2,17 @@ package domes1;
 
 public class AAList implements List {
 
-	private Element[] elements;
-	private int[] next;
-	private int head;
-	private int tail;
-	private int nextFree; // points to the first free position to elements
-	long totalTimeInsert;
-	long totalTimeDelete;
-	long totalTimeSearch;
-	int insertCount;
-	int deleteCount;
-	int searchCount;
+	protected Element[] elements;
+	protected int[] next;
+	protected int head;
+	protected int tail;
+	protected int nextFree; // points to the first free position to elements
+	protected long totalTimeInsert;
+	protected long totalTimeDelete;
+	protected long totalTimeSearch;
+	protected int insertCount;
+	protected int deleteCount;
+	protected int searchCount;
 
 	// Constructor
 	public AAList(int maxSize) {
@@ -21,13 +21,10 @@ public class AAList implements List {
 		head = -1;
 		tail = -1;
 		nextFree = 0;
+		this.next = new int[maxSize];
 		for (int i = 0; i < maxSize - 1; i++) {
 			next[i] = i + 1;
 		}
-		this.next = new int[maxSize];
-        for (int i = 0; i < maxSize; i++) {
-            this.next[i] = -1;
-        }
 		this.totalTimeInsert = 0;
 		this.totalTimeDelete = 0;
 		this.totalTimeSearch = 0;
@@ -92,7 +89,7 @@ public class AAList implements List {
 
 		}
 		MultiCounter.increaseCounter(2);
-		System.out.println("Element not found");
+		//System.out.println("Element not found to delete");
 		return false;
 	}
 
@@ -106,7 +103,7 @@ public class AAList implements List {
 			MultiCounter.increaseCounter(3, 3);
 		}
 		MultiCounter.increaseCounter(3,2);
-		System.out.println("Element not found");
+		//System.out.println("Element not found for search");
 		return null;
 	}
 	
