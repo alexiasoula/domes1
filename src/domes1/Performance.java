@@ -18,7 +18,7 @@ public class Performance {
 
     private static List[] runExperiment(int n) {
         // Preparation
-        List[] implementations = {new DList(), new SDList(), new AAList(n + 10000), new SAAList(n + 10000), new AList(n + 10000)/*, new SAList(n + 10000)*/};
+        List[] implementations = {new DList(), new SDList(), new AAList(n + 10000), new SAAList(n + 10000), new AList(n + 10000), new SAList(n + 10000)};
 
         int[] keys = generateRandomKeys(n, n);
 
