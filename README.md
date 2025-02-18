@@ -16,7 +16,3 @@ The goal of this project is to implement and compare **six versions of lists** i
 6. **SAList**: Sorted Array-Based List with Fixed Capacity.
 
 Each list implementation is tested on specific operations (e.g., insertion, deletion, search), and performance metrics are recorded and analyzed.
-
----
-
-## 🗂 Repository Structure
